@@ -76,7 +76,7 @@ module GoogleChart
     def to_url(extras={})
       prepare_params
       params.merge!(extras)
-      query_string = params.map { |k,v| "#{k}=#{URI.escape(v.to_s).gsub(/%20/,'+').gsub(/%7C/,'|')}" }.join('&')
+      query_string = params.map { |k,v| "#{k}=#{CGI.escape(v.to_s)}" }.join('&')
       BASE_URL + query_string
     end
 
